@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: AppString.appName,
       debugShowCheckedModeBanner: false,
-      initialRoute: RoutesName.homePage,
+      initialRoute: RoutesName.signInPage,
        getPages: AppRoutes.appRoutes(),
        theme: ThemeData(
         scaffoldBackgroundColor: AppColor.scaffoldColor,

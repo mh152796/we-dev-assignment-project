@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:we_dev_assignment_project/routes/routes_name.dart';
 
+import '../features/auth/pages/sign_in_screen.dart';
 import '../features/home/pages/home_page.dart';
 
 class AppRoutes {
   static appRoutes() => [
 
     RoutesName.homePage.toGetPage(page: () =>  HomePage()),
+    RoutesName.signInPage.toGetPage(page: () =>  const SignInPage()),
 
   ];
 }

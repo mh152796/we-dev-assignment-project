@@ -6,8 +6,6 @@ import 'package:get/get.dart';
 import 'package:we_dev_assignment_project/features/home/controller/product_controller.dart';
 import 'package:we_dev_assignment_project/resources/app_color/color.dart';
 import 'package:we_dev_assignment_project/utils/text_style.dart';
-
-import '../../../custom_widget/custom_horizontal_container.dart';
 import '../../../custom_widget/dynamic_image.dart';
 import '../../../data/response/status.dart';
 import '../../../utils/responsive_size.dart';

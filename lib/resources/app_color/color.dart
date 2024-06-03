@@ -13,5 +13,10 @@ class AppColor {
   static Color horizontalContainerShadow = const Color(0xff395AB8);
   static Color filterIconColor = const Color(0xffB6BED4);
   static Color filterTextColor = const Color(0xff818995);
+  static Color signInUpIconColor = const Color(0xff7C8592);
+  static Color signInUpLabelTextColor = const Color(0xffA4A9AF);
+  static Color signInUpButtonColor = const Color(0xffF75F55);
+  static Color facebookColor = const Color(0xff3B5998);
+  static Color createAccountColor = const Color(0xff383C40);
 
 }
