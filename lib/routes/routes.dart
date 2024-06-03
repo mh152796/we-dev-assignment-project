@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:we_dev_assignment_project/routes/routes_name.dart';
+
+import '../features/home/pages/home_page.dart';
 
 class AppRoutes {
   static appRoutes() => [
 
-    // RoutesName.webViewPayment.toGetPage(page: () =>   WebViewPayment(url: Get.arguments['url'], appbar: Get.arguments['appbar'], spOrderId: Get.arguments['spOrder'], routeName: Get.arguments['routeName'],)),
-    // RoutesName.courseDetails.toGetPage(page: () =>  CourseDetails(course: Get.arguments['course'],)),
+    RoutesName.homePage.toGetPage(page: () =>  HomePage()),
 
   ];
 }
