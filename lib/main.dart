@@ -23,10 +23,13 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: AppString.appName,
       debugShowCheckedModeBanner: false,
-      initialRoute: RoutesName.signInPage,
+      initialRoute: RoutesName.accountScreen,
        getPages: AppRoutes.appRoutes(),
        theme: ThemeData(
         scaffoldBackgroundColor: AppColor.scaffoldColor,
+         bottomSheetTheme: BottomSheetThemeData(
+           surfaceTintColor: AppColor.bottomSheetBgColor, // Set your desired color here
+         ),
          fontFamily: "Roboto",
          useMaterial3: true,
       ),

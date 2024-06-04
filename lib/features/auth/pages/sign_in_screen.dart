@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:we_dev_assignment_project/resources/app_color/color.dart';
+import 'package:we_dev_assignment_project/routes/routes_name.dart';
 import 'package:we_dev_assignment_project/utils/text_style.dart';
 
 import '../../../custom_widget/custom_horizontal_container.dart';
@@ -62,7 +64,7 @@ class _SignInPageState extends State<SignInPage> {
               CustomHorizontalContainer(
                 height: 55,
                 child: TextFormField(
-                  controller: _emailController,
+                  controller: _passwordController,
                   decoration: InputDecoration(
                     // labelText: 'Email',
                     hintText: 'Password',
@@ -72,7 +74,7 @@ class _SignInPageState extends State<SignInPage> {
                     border: InputBorder.none, // Remove border
                   ),
                   // validator: _validateEmail,
-                  keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.visiblePassword,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                 ), ),
               Gaps.verticalGapOf(10),
@@ -90,7 +92,7 @@ class _SignInPageState extends State<SignInPage> {
                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
                  child: SignInUpButton(
                    buttonText: "Login", onPressed: () {
-
+             Get.toNamed(RoutesName.homePage);
                  },),
                ),
                Gaps.verticalGapOf(20),
