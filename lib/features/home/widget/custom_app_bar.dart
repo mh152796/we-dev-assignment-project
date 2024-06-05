@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:we_dev_assignment_project/custom_widget/custom_horizontal_container.dart';
 import 'package:we_dev_assignment_project/resources/app_color/color.dart';
 
 import '../../../utils/text_style.dart';
+import '../controller/product_controller.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({
+    CustomAppBar({
     super.key,
     required this.height,
     required this.onPressed,
@@ -13,6 +15,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   final double height;
   final VoidCallback onPressed;
+  
+  final _controller = Get.find<ProductController>();
 
   @override
   Widget build(BuildContext context) {
@@ -76,14 +80,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(
-                        "Sort by",
+                      Obx(() => Text(
+                        _controller.filterKey.value.isEmpty? "Sort by" : _controller.filterKey.value,
                         style: AppTextStyles.textStyleRoboto400
                             .setColor(
-                              AppColor.filterTextColor,
-                            )
+                          AppColor.filterTextColor,
+                        )
                             .setFontSize(14),
-                      ),
+                      )),
                       Icon(Icons.keyboard_arrow_down, color: AppColor.filterTextColor,),
                       const SizedBox(width: 8,),
                       Icon(Icons.menu, color: AppColor.blackColor,),

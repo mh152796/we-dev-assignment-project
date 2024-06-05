@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:we_dev_assignment_project/resources/app_color/color.dart';
-import 'package:we_dev_assignment_project/utils/responsive_size.dart';
 import 'package:we_dev_assignment_project/utils/text_style.dart';
 
 import '../../../utils/gaps.dart';
