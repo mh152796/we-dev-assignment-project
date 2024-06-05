@@ -42,6 +42,7 @@ class HomePage extends StatelessWidget {
                   return Container(
                     color: AppColor.bottomSheetBgColor,
                     height: 350,
+                    width: double.infinity,
                     child: ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: filterItems.length,
@@ -86,31 +87,32 @@ class HomePage extends StatelessWidget {
                               onPressed: (bool? value) {
 
                               }),
-                              Row(
+                              LayoutBuilder(builder: (context, constraints) => Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
                                   ElevatedButton(
                                       style: ElevatedButton.styleFrom(
-                                          fixedSize:  Size(context.width * .4, 50),
-                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                                        backgroundColor: AppColor.whiteColor,
-                                        side: const BorderSide(color: Color(0xffD2DBE0), width: 1)
+                                          fixedSize:  Size(constraints.maxWidth * .45, 50),
+                                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                          backgroundColor: AppColor.whiteColor,
+                                          side: const BorderSide(color: Color(0xffD2DBE0), width: 1)
                                       ),
                                       onPressed: () {
 
-                                    }, child: Text("Cancel", style: AppTextStyles.textStyleRoboto700.setColor(const Color(0xff818995)),)),
+                                      }, child: Text("Cancel", style: AppTextStyles.textStyleRoboto700.setColor(const Color(0xff818995)),)),
                                   ElevatedButton(
                                       style: ElevatedButton.styleFrom(
-                                        fixedSize:  Size(context.width * .4, 50),
-                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                                        backgroundColor: AppColor.bottomSheetApplyBtnColor
+                                          fixedSize:  Size(constraints.maxWidth * .45, 50),
+                                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                          backgroundColor: AppColor.bottomSheetApplyBtnColor
                                       ),
                                       onPressed: () {
 
-                                    }, child: Text("Apply", style: AppTextStyles.textStyleRoboto700.setColor(AppColor.whiteColor),)),
+                                      }, child: Text("Apply", style: AppTextStyles.textStyleRoboto700.setColor(AppColor.whiteColor),)),
                                 ],
                               )
-                            ],
+                                ,)
+                             ],
                           );
                         }
                         return  buildCheckBoxRow(

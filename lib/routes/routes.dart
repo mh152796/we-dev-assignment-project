@@ -5,6 +5,7 @@ import 'package:we_dev_assignment_project/routes/routes_name.dart';
 import '../features/auth/pages/account_screen.dart';
 import '../features/auth/pages/sign_in_screen.dart';
 import '../features/auth/pages/sign_up_screen.dart';
+import '../features/bottom_nav/bottm_nav_screen.dart';
 import '../features/home/pages/home_page.dart';
 
 class AppRoutes {
@@ -14,6 +15,7 @@ class AppRoutes {
     RoutesName.signUpScreen.toGetPage(page: () =>  const SignUpScreen()),
     RoutesName.signInPage.toGetPage(page: () =>  const SignInPage()),
     RoutesName.accountScreen.toGetPage(page: () =>  const AccountScreen()),
+    RoutesName.bottomNavScreen.toGetPage(page: () =>  BottomNavScreen()),
 
   ];
 }
