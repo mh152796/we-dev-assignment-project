@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:we_dev_assignment_project/features/auth/pages/account_screen.dart';
 import 'package:we_dev_assignment_project/features/home/pages/home_page.dart';
 import 'package:we_dev_assignment_project/resources/app_color/color.dart';
 import 'package:we_dev_assignment_project/utils/responsive_size.dart';
 
+import 'controller/nav_controller.dart';
+
 class BottomNavScreen extends StatelessWidget {
     BottomNavScreen({super.key});
-
+ final _navController = Get.find<NavController>();
   final List navWidgetList = [
     HomePage(),
+    HomePage(),
+    HomePage(),
+    const AccountScreen(),
   ];
 
   @override
@@ -41,7 +48,7 @@ class BottomNavScreen extends StatelessWidget {
         ),
         child:  Icon(Icons.search, color: AppColor.whiteColor,),
       )),
-      body: navWidgetList[0],
+      body: Obx(() => navWidgetList[_navController.navIndex.value],),
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(
 
@@ -61,13 +68,13 @@ class BottomNavScreen extends StatelessWidget {
                      MaterialButton(
                        minWidth: 50,
                        onPressed: () {
-
+                         _navController.updateNavIndex(index: 0);
                        }, child: Icon(Icons.home_outlined, color: AppColor.bottomNavItemColor, size: 30,),
                      ),
                      MaterialButton(
                        minWidth: 50,
                        onPressed: () {
-
+                         _navController.updateNavIndex(index: 1);
                      }, child: Icon(Icons.dashboard_outlined, color: AppColor.bottomNavItemColor, size: 30,),
                          ),
                    ],
@@ -82,13 +89,13 @@ class BottomNavScreen extends StatelessWidget {
                      MaterialButton(
                        minWidth: 50,
                        onPressed: () {
-
+                         _navController.updateNavIndex(index: 2);
                        }, child: Icon(Icons.shopping_cart_outlined, color: AppColor.bottomNavItemColor, size: 30,),
                      ),
                      MaterialButton(
                        minWidth: 50,
                        onPressed: () {
-
+                         _navController.updateNavIndex(index: 3);
                        }, child: Icon(Icons.person_outline, color: AppColor.bottomNavItemColor, size: 30,),
                      ),
                    ],

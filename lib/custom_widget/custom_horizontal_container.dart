@@ -11,9 +11,9 @@ class CustomHorizontalContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: height,
       width: double.infinity,
-      height: height ?? 60 ,
-      margin: margin,
+       margin: margin,
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: AppColor.whiteColor,

@@ -59,11 +59,10 @@ class NetworkApiServices extends BaseApiServices {
        headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
-          'Authorization': 'Bearer ',
-          },
+           },
       body: data == null? null : jsonEncode(data)
       ).timeout(const Duration(seconds: 30));
-
+       print("responsssssssssssssss ${jsonDecode(response.body)}");
       responseJson = returnResponse(response);
 
     }on SocketException {

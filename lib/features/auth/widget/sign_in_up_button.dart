@@ -5,10 +5,11 @@ import 'package:we_dev_assignment_project/utils/responsive_size.dart';
 import '../../../utils/text_style.dart';
 
 class SignInUpButton extends StatelessWidget {
-  const SignInUpButton({super.key, this.onPressed, required this.buttonText});
+    SignInUpButton({super.key, this.onPressed, required this.buttonText, this.isLoading = false});
 
   final VoidCallback? onPressed;
   final String buttonText;
+  bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,10 @@ class SignInUpButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         )
       ),
-        onPressed: onPressed, child: Text(
+        onPressed: onPressed, child: isLoading? const Padding(
+          padding: EdgeInsets.symmetric(vertical: 5.0),
+          child: CircularProgressIndicator(color: Colors.white,),
+        ) : Text(
       buttonText,
       style: AppTextStyles.textStyleRoboto400.fontWeight500.setColor(AppColor.whiteColor),
     ));

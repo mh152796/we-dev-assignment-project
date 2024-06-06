@@ -38,8 +38,10 @@ dependencies:
   get: ^4.6.6
   cached_network_image:
   http: ^1.2.1
+  shared_preferences:
   flutter_rating_bar:
   dotted_border: ^2.1.0
+  flutter_native_splash: ^2.4.0
 
 dev_dependencies:
   flutter_test:

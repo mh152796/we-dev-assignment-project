@@ -12,7 +12,7 @@ class AppRoutes {
   static appRoutes() => [
 
     RoutesName.homePage.toGetPage(page: () =>  HomePage()),
-    RoutesName.signUpScreen.toGetPage(page: () =>  const SignUpScreen()),
+    RoutesName.signUpScreen.toGetPage(page: () =>  SignUpScreen()),
     RoutesName.signInPage.toGetPage(page: () =>  const SignInPage()),
     RoutesName.accountScreen.toGetPage(page: () =>  const AccountScreen()),
     RoutesName.bottomNavScreen.toGetPage(page: () =>  BottomNavScreen()),

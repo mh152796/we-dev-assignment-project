@@ -46,6 +46,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               ],
             ),
             CustomHorizontalContainer(
+              height: 55,
                 child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
               child: Row(
