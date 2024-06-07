@@ -1,8 +1,12 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/get_rx.dart';
+import 'package:we_dev_assignment_project/features/home/widget/filter_pop_up.dart';
 import '../../../data/response/status.dart';
+import '../../../resources/app_color/color.dart';
+import '../../../utils/text_style.dart';
 
 class ProductController extends GetxController {
 
@@ -11,6 +15,21 @@ class ProductController extends GetxController {
   final fetchProductRxRequestStatus = Status.LOADING.obs;
   RxList storeDataList = RxList();
 
+
+  Future<void> filterDialog({required BuildContext context}) async {
+    showModalBottomSheet<void>(
+        context: context,
+        isScrollControlled: true,
+        // backgroundColor: AppColor.bottomSheetBgColor,
+        enableDrag: true,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10),
+                topRight: Radius.circular(10))),
+        builder: (BuildContext context) {
+          return  FilterPopUp();
+        });
+  }
 
 
   RxList filterItems = RxList( [
@@ -64,7 +83,7 @@ class ProductController extends GetxController {
 
   @override
   void onInit() {
-     loadProduct();
+    loadProduct();
     super.onInit();
   }
 }

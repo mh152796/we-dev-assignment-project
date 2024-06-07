@@ -13,19 +13,19 @@ class CustomHorizontalContainer extends StatelessWidget {
     return Container(
       height: height,
       width: double.infinity,
-       margin: margin,
+      margin: margin,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: AppColor.whiteColor,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: AppColor.horizontalContainerShadow.withOpacity(.13),
-            offset: const Offset(3, 7),
-            blurRadius: 5,
-            spreadRadius: -6,
-          )
-        ]
+          color: AppColor.whiteColor,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: AppColor.horizontalContainerShadow.withOpacity(.13),
+              offset: const Offset(3, 7),
+              blurRadius: 5,
+              spreadRadius: -6,
+            )
+          ]
       ),
       child: child,
     );

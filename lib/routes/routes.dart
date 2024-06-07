@@ -14,7 +14,7 @@ class AppRoutes {
     RoutesName.homePage.toGetPage(page: () =>  HomePage()),
     RoutesName.signUpScreen.toGetPage(page: () =>  SignUpScreen()),
     RoutesName.signInPage.toGetPage(page: () =>  const SignInPage()),
-    RoutesName.accountScreen.toGetPage(page: () =>  const AccountScreen()),
+    RoutesName.accountScreen.toGetPage(page: () =>    AccountScreen()),
     RoutesName.bottomNavScreen.toGetPage(page: () =>  BottomNavScreen()),
 
   ];

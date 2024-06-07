@@ -7,4 +7,4 @@ class RoutesName {
    static const String accountScreen = '/account_screen';
    static const String bottomNavScreen = '/bottom_av_screen';
 
- }
+}

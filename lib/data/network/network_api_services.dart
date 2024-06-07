@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:we_dev_assignment_project/features/auth/controller/auth_controller.dart';
 import '../app_exception.dart';
 import 'base_api_services.dart';
 import 'package:http/http.dart' as http;
@@ -16,24 +17,26 @@ class NetworkApiServices extends BaseApiServices {
     dynamic responseJson ;
 
     dynamic headers =  {
-        'Authorization': 'Bearer '
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer '
 
     };
 
     try{
-       final response = await http.get(
-           Uri.parse(url),
-          headers: headers,
-       ).timeout(const Duration(seconds: 30));
-          responseJson = returnResponse(response);
+      final response = await http.get(
+        Uri.parse(url),
+        headers: headers,
+      ).timeout(const Duration(seconds: 30));
+      responseJson = returnResponse(response);
 
     }on SocketException {
-       throw InternetException('');
+      throw InternetException('');
     }on RequestTimeOut{
       throw RequestTimeOut('');
     }
     catch (e){
-    rethrow;
+      rethrow;
     }
 
     if (kDebugMode) {
@@ -50,19 +53,57 @@ class NetworkApiServices extends BaseApiServices {
     if (kDebugMode) {
       print("url url ${url.toString()}");
       print("dattatatatat ${data.toString()}");
-     }
+    }
 
     dynamic responseJson ;
     try{
 
       final response = await http.post(Uri.parse(url),
-       headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-           },
-      body: data == null? null : jsonEncode(data)
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: data == null? null : jsonEncode(data)
       ).timeout(const Duration(seconds: 30));
-       print("responsssssssssssssss ${jsonDecode(response.body)}");
+      print("dfgcdshgfsdgsd ${response.body}");
+      responseJson = returnResponse(response);
+
+    }on SocketException {
+      throw InternetException('');
+    }on RequestTimeOut {
+      throw RequestTimeOut('');
+    } catch (e){
+      rethrow;
+    }
+
+    if (kDebugMode) {
+      print(responseJson);
+    }
+
+    return responseJson;
+
+  }
+
+
+  @override
+  Future<dynamic> putApi({required String url, data}) async{
+    final authController = Get.find<AuthController>();
+    if (kDebugMode) {
+      print("dattatatatat ${data.toString()}");
+    }
+
+    dynamic responseJson ;
+    try{
+
+      final response = await http.put(Uri.parse(url),
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ${authController.authToken}',
+          },
+          body: data == null? null : jsonEncode(data)
+      ).timeout(const Duration(seconds: 30));
+      print("responsssssssssssssss ${jsonDecode(response.body)}");
       responseJson = returnResponse(response);
 
     }on SocketException {
@@ -85,16 +126,16 @@ class NetworkApiServices extends BaseApiServices {
 
 
   dynamic returnResponse(http.Response response){
-     switch(response.statusCode){
+    switch(response.statusCode){
       case 200 || 201:
         dynamic responseJson = jsonDecode(response.body);
         return responseJson;
       case 400:
         throw "somethings went wrong ${response.statusCode}";
-       case 404:
+      case 404:
         throw "Not Found ${response.statusCode}";
       default:
-         throw FetchDataException('Error accorded while communication with server ${response.statusCode}');
+        throw FetchDataException('Error accorded while communication with server ${response.statusCode}');
     }
   }
 

@@ -24,30 +24,30 @@ class SignInPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-           children: [
+          children: [
             Gaps.verticalGapOf(50),
-             Padding(
-               padding: const EdgeInsets.only(top: 10.0),
-               child: Center(
+            Padding(
+              padding: const EdgeInsets.only(top: 10.0),
+              child: Center(
                 child: Image.asset(
                   "assets/images/logo.png",
                   fit: BoxFit.fill,
                   width: 165,
                   height: 50,
                 ),
-                         ),
-             ),
-             Gaps.verticalGapOf(50),
-             Form(
-               key: _authController.formKey,
-               child: Column(
+              ),
+            ),
+            Gaps.verticalGapOf(50),
+            Form(
+              key: _authController.formKey,
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text("Sign In", style: AppTextStyles.textStyleRoboto700.setFontSize(20),),
                   Gaps.verticalGapOf(20),
                   CustomHorizontalContainer(
-                     child: Padding(
+                    child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 5.0),
                       child: TextFormField(
                         controller: _authController.emailController,
@@ -93,39 +93,44 @@ class SignInPage extends StatelessWidget {
                         child: Text("Forgot Password?", textAlign: TextAlign.right, style: AppTextStyles.textStyleRoboto400.fontSize14.setColor(AppColor.signInUpLabelTextColor),)),
                   ),
                 ],
-                         ),
-             ),
-             Gaps.verticalGapOf(60),
-             Column(
-               children: [
-                 Padding(
-                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                   child: Obx(() => SignInUpButton(
-                     isLoading: _authController.loginRequestStatus.value == Status.LOADING? true : false,
-                     buttonText: "Login", onPressed: () {
-                     _authController.userLogin();
-                   },),),
-                 ),
-                 Gaps.verticalGapOf(40),
-                 Row(
-                   mainAxisAlignment: MainAxisAlignment.center,
-                   mainAxisSize: MainAxisSize.max,
-                   children: [
-                     const ImageButton(imagePath: "facebook_logo.png", ),
-                     Gaps.horizontalGapOf(10),
-                     const ImageButton(imagePath: "google.png",),
-                   ],
-                 ),
-                 Gaps.verticalGapOf(20),
-                 GestureDetector(
-                   onTap: () {
-                     Get.toNamed(RoutesName.signUpScreen);
-                   },
-                   child: Text("Create New Account", style:
-                   AppTextStyles.textStyleRoboto400.setColor(AppColor.createAccountColor).setFontSize(20),),
-                 )
-               ],
-             )
+              ),
+            ),
+            Gaps.verticalGapOf(60),
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Obx(() => SignInUpButton(
+                    isLoading: _authController.loginRequestStatus.value == Status.LOADING? true : false,
+                    buttonText: "Login", onPressed: () {
+                    if(_authController.loginRequestStatus.value == Status.LOADING){
+                      return;
+                    }
+                    _authController.userLogin();
+                  },),),
+                ),
+                Gaps.verticalGapOf(40),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    const ImageButton(imagePath: "facebook_logo.png", ),
+                    Gaps.horizontalGapOf(10),
+                    const ImageButton(imagePath: "google.png",),
+                  ],
+                ),
+
+                Gaps.verticalGapOf(20),
+                GestureDetector(
+                  onTap: () {
+                    _authController.clearController();
+                    Get.toNamed(RoutesName.signUpScreen);
+                  },
+                  child: Text("Create New Account", style:
+                  AppTextStyles.textStyleRoboto400.setColor(AppColor.createAccountColor).setFontSize(20),),
+                )
+              ],
+            )
           ],
         ),
       ),

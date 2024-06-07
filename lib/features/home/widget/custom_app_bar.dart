@@ -7,7 +7,7 @@ import '../../../utils/text_style.dart';
 import '../controller/product_controller.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-    CustomAppBar({
+  CustomAppBar({
     super.key,
     required this.height,
     required this.onPressed,
@@ -15,7 +15,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   final double height;
   final VoidCallback onPressed;
-  
+
   final _controller = Get.find<ProductController>();
 
   @override
@@ -37,7 +37,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
                 const Spacer(),
                 IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.find<ProductController>().filterDialog(context: context);
+                    },
                     icon: Icon(
                       Icons.search,
                       size: 25,
@@ -46,57 +48,57 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               ],
             ),
             CustomHorizontalContainer(
-              height: 55,
+                height: 55,
                 child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Transform.rotate(
-                        angle: -90 * 3.1415927 / 180,
-                        // Rotate 90 degrees counter-clockwise
-                        child: Icon(
-                          Icons.tune,
-                          size: 20,
-                          color: AppColor.filterIconColor,
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        "Filter",
-                        style: AppTextStyles.textStyleRoboto400
-                            .setColor(
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Transform.rotate(
+                            angle: -90 * 3.1415927 / 180,
+                            // Rotate 90 degrees counter-clockwise
+                            child: Icon(
+                              Icons.tune,
+                              size: 20,
+                              color: AppColor.filterIconColor,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          Text(
+                            "Filter",
+                            style: AppTextStyles.textStyleRoboto400
+                                .setColor(
                               AppColor.filterTextColor,
                             )
-                            .setFontSize(14),
-                      )
-                    ],
-                  ),
+                                .setFontSize(14),
+                          )
+                        ],
+                      ),
 
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Obx(() => Text(
-                        _controller.filterKey.value.isEmpty? "Sort by" : _controller.filterKey.value,
-                        style: AppTextStyles.textStyleRoboto400
-                            .setColor(
-                          AppColor.filterTextColor,
-                        )
-                            .setFontSize(14),
-                      )),
-                      Icon(Icons.keyboard_arrow_down, color: AppColor.filterTextColor,),
-                      const SizedBox(width: 8,),
-                      Icon(Icons.menu, color: AppColor.blackColor,),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Obx(() => Text(
+                            _controller.filterKey.value.isEmpty? "Sort by" : _controller.filterKey.value,
+                            style: AppTextStyles.textStyleRoboto400
+                                .setColor(
+                              AppColor.filterTextColor,
+                            )
+                                .setFontSize(14),
+                          )),
+                          Icon(Icons.keyboard_arrow_down, color: AppColor.filterTextColor,),
+                          const SizedBox(width: 8,),
+                          Icon(Icons.menu, color: AppColor.blackColor,),
+                        ],
+                      ),
                     ],
                   ),
-                ],
-              ),
-            )),
+                )),
           ],
         ),
       ),

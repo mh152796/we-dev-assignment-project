@@ -27,6 +27,7 @@ class AppColor {
   static Color checkBoxColor = 0xffFF708A.color;
   static Color bottomSheetApplyBtnColor = 0xff1ABC9C.color;
   static Color bottomNavItemColor = 0xff6E7FAA.color;
+  static Color navActiveIconColor = 0xffFF679B.color;
 
   //account page
   static Color accountPageTextColor = 0xff263238.color;
